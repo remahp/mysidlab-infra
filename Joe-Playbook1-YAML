@@ -1,0 +1,26 @@
+---
+
+- name: Set Time Zone on AWS instance
+  hosts: all
+  become: true
+  vars:
+    hostname: Joes-AWS-Instance
+    tz: Antartica/McMurdo
+    
+  tasks:
+    - name: Set timezone to "{{ tz }}"
+      timezone:
+        name: "{{ tz }}"
+    - name: Display new timezone
+      shell: date +%Z
+      
+    - name: Set Hostname
+      hostname:
+      name: "{{ hostname }}"
+      
+    - name: Dump Host Facts
+      setup:
+      
+
+    
+  
